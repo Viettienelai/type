@@ -201,15 +201,7 @@
     <div class="container">
         <h1>🚀 Typing Test - Custom Vocabulary</h1>
 
-        <div class="config-section">
-            <div class="config-title">📊 Cấu hình Google Apps Script</div>
-            <input type="text" id="gasUrl"
-                placeholder="Nhập URL Google Apps Script của bạn (ví dụ: https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec)"
-                value="https://script.google.com/macros/s/AKfycbx884IWirnF5sCBt6uWZof7fMW7HL82e3F-K01Ws6rT8gKEJeHwh6elmwMCktIYi6Ik/exec">
-            <div style="margin-top: 10px; font-size: 14px; opacity: 0.8;">
-                💡 Hướng dẫn: Tạo Google Apps Script, deploy as web app, và dán URL vào đây
-            </div>
-        </div>
+
 
         <div class="controls">
             <div class="btn-group">
@@ -252,11 +244,7 @@
         }
 
         async function loadVocabulary() {
-            const gasUrl = document.getElementById('gasUrl').value.trim();
-            if (!gasUrl) {
-                updateStatus('Vui lòng nhập URL Google Apps Script', 'error');
-                return;
-            }
+            const gasUrl = 'https://script.google.com/macros/s/AKfycbx884IWirnF5sCBt6uWZof7fMW7HL82e3F-K01Ws6rT8gKEJeHwh6elmwMCktIYi6Ik/exec';
 
             const loadBtn = document.getElementById('loadBtn');
             const status = document.getElementById('status');
@@ -304,22 +292,6 @@
             status.textContent = message;
             status.className = `status ${type}`;
         }
-
-        // Auto-save GAS URL
-        document.getElementById('gasUrl').addEventListener('input', function () {
-            localStorage.setItem('gasUrl', this.value);
-        });
-
-        // Load saved GAS URL
-        window.addEventListener('load', function () {
-            const savedUrl = localStorage.getItem('gasUrl');
-            if (savedUrl) {
-                document.getElementById('gasUrl').value = savedUrl;
-            } else {
-                // Nếu chưa có URL lưu, sử dụng URL mặc định
-                document.getElementById('gasUrl').value = 'https://script.google.com/macros/s/AKfycbx884IWirnF5sCBt6uWZof7fMW7HL82e3F-K01Ws6rT8gKEJeHwh6elmwMCktIYi6Ik/exec';
-            }
-        });
     </script>
 </body>
 
